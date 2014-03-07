@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+	<title>Slide Up</title>
+	<style>
+	    html, body {
+            width: 100%;
+            height: 100%;
+        }
+	    body{
+	        padding: 0px;
+	        margin: 0px;
+	        position: relative;
+	    }
+	    .slides{
+	        position: relative;
+	        top: 0px;
+	        overflow: hidden;
+	        vertical-align: baseline;
+	        width: 100%;
+	        height: 100%;
+	        text-align: center;
+	        font-size: 300%;
+	    }
+	    .slides .wrapper{
+            background-repeat: no-repeat;
+	        background-size: auto 100%;
+	        position: fixed;
+	        top: 0px;
+	        width: 100%;
+	        height: 100%;
+	    }
+	    .slide1{
+	        z-index: 5;
+	    }
+	    .slide1 .wrapper{
+	        background-image: url(images/slide_1.jpg);
+	    }
+	    .slide2{
+	        z-index: 4;
+	    }
+	    .slide2 .wrapper{
+	        background-image: url(images/slide_2.jpg);
+	    }
+	    .slide3{
+	        z-index: 3;
+	    }
+	    .slide3 .wrapper{
+	        background-image: url(images/slide_3.jpg);
+	    }
+	    .slide4{
+	        z-index: 2;
+	    }
+	    .slide4 .wrapper{
+	        background-image: url(images/slide_4.jpg);
+	    }
+	    .slide5{
+	        z-index: 1;
+	    }
+	    .slide5 .wrapper{
+	        background-image: url(images/slide_5.jpg);
+	    }
+	    .scroller{
+	        height: 4000px;
+	    }
+	</style>
+</head>
+
+<body>
+
+    <div class="slides slide1">
+        <div class="wrapper"  data-0="position:fixed;" data--1-top="position:absolute;top:0;">
+            Slide 1
+        </div>
+    </div>
+    <div class="slides slide2">
+        <div class="wrapper" data-0="position:fixed;" data--1-top="position:absolute;top:0;">
+            Slide 2
+        </div>
+    </div>
+    <div class="slides slide3">
+        <div class="wrapper" data-0="position:fixed;" data--1-top="position:absolute;top:0;">
+            Slide 3
+        </div>
+    </div>
+    <div class="slides slide4">
+        <div class="wrapper" data-0="position:fixed;" data--1-top="position:absolute;top:0;">
+            Slide 4
+        </div>
+    </div>
+    <div class="slides slide5">
+        <div class="wrapper" data-0="position:fixed;" data--1-top="position:absolute;top:0;">
+            Slide 5
+        </div>
+    </div>
+    
+
+	<script type="text/javascript" src="../dist/skrollr.min.js"></script>
+	<script type="text/javascript">
+	    skrollr.init();
+	</script>
+</body>
+
+</html>

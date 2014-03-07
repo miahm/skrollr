@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<title>ProjectMiso | ...</title>
+<!--[if IE]>
+    <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+	<link href="styles/styles.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/modernizr_2.0.6.js"></script>
+</head>
+<body class="body_overlay_style">
+
+    <!-- Loading Overlay -->
+    <div class="loading_overlay">
+		<div class="spinner moon"></div>
+    </div>
+    
+    <!--
+        Main Nav - that can move and reposition
+    -->
+    <nav class="main">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Our Process</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Case Studies</a></li>
+        </ul>
+    </nav>
+    
+    
+    
+    <!--  
+        ############   Intro Scene 1 ##############
+        Starts: 0 scroll points | Ends: 205 scroll points
+    -->
+    <section class="section intro_logo_scene">
+        <!-- turn this from absolute/relative to fixed, then return to absolute to move it out of screen -->
+        <div class="logo_box" data-201="position: fixed; top: 50%;" data-205="position: absolute; top: 0px">
+            <div class="logo_broken">
+                <div class="project" data-60="left: 0px;opacity:1" data-200="left: -100px;opacity:0"><img src="images/logo_01_project.png" width="204" height="49" alt="logo_01_project"></div>
+                <div class="miso" data-60="left: 199px;opacity:1" data-200="left: 300px;opacity:0"><img src="images/logo_01_miso.png" width="131" height="46" alt="logo_01_miso"></div>
+                <div class="bars top">
+                    <div class="color_4" data-0="top: 42px;opacity:1" data-200="top: -500px;opacity:0"></div>
+                    <div class="color_3" data-0="top: 21px;opacity:1" data-150="top: -500px;opacity:0"></div>
+                    <div class="color_2" data-0="top: 0px;opacity:1" data-100="top: -500px;opacity:0"></div>
+                    <div class="color_1" data-0="top: 21px;opacity:1" data-50="top: -500px;opacity:0"></div>
+                </div>
+                <div class="bars bottom">
+                    <div class="color_4" data-0="top: 0px;opacity:1" data-200="top: 500px;opacity:0"></div>
+                    <div class="color_3" data-0="top: 0px;opacity:1" data-150="top: 500px;opacity:0"></div>
+                    <div class="color_2" data-0="top: 0px;opacity:1" data-100="top: 500px;opacity:0"></div>
+                    <div class="color_1" data-0="top: 0px;opacity:1" data-50="top: 500px;opacity:0"></div>
+                </div>
+            </div>
+        </div>
+    
+    </section>
+    
+    <!-- 
+        Black/White Slanted Background 
+        Should start moving just before logo disappears => for Intro Scene 2
+    -->
+    <div class="slanted_bg" 
+        data-0="left: 130%;" 
+        data-150="left: 130%;" data-250="left: 30%;" 
+        data-1400="left: 30%;" data-1700="left: -67%;">
+        <div class="slanted_bg_1"></div>
+    </div>
+        
+    <!-- 
+        ############   Intro Scene 2 ##############
+        Starts: 150 scroll points | Ends: 1500 scroll points
+        
+        Animation completed by 1200, pause till 1300
+    -->
+    <!-- The Scene Section -->
+    <section class="section intro_scene2">
+        <div class="wrapper">
+            
+            <!-- 
+                Turn this from absolute/relative to fixed, then return to absolute to move it out of screen.
+                Time it to show this after the H1 paragraphs below.
+                Phase out while Scene 3 is coming in. Time this with Scene 3 logo.
+            -->
+            <header 
+                data-700="position:fixed;opacity:0;top:-200px;" data-1100="opacity:1;top:40px;"
+                data-1500="opacity:1;" data-1605="opacity:0; pisition: relative;">
+                <a href="/" class="logo" title="Home"></a>
+            </header>
+            
+            <!--
+                Turning this to fixed position just before the logo disintegration completes.
+                Phases out as Scene 3 comes in
+            -->
+            <div class="content_box" 
+                data-150="position:fixed; left: 15%;"
+                data-1500="opacity: 1;" data-1605="opacity: 0; position: relative;">
+                
+                <!-- This H1 is invisible to the user -->
+                <h1 class="out">We develop business solutions. We design for people. We make websites.</h1>
+                
+                <!-- 
+                    Animated H1s 
+                    Each takes 100 points, the next start -30 points
+                    Starts slightly before the slanted BG stops - see above.
+                -->
+                <h1>
+                    <div class="pieces" 
+                        data-230="opacity: 0; top: 50px; transform: rotate(10deg);" data-330="opacity: 1; top: 0px; transform: rotate(0deg);" >We</div>
+                    <div class="pieces" 
+                        data-300="opacity: 0; top: 50px; transform: rotate(10deg);" data-400="opacity: 1; top: 0px; transform: rotate(0deg);">develop</div>
+                    <div class="pieces"  
+                        data-370="opacity: 0; top: 50px; transform: rotate(10deg);" data-470="opacity: 1; top: 0px; transform: rotate(0deg);">business</div>
+                    <div class="pieces" data-0="opacity: 0; top: 20px; transform: rotate(10deg);" 
+                        data-440="opacity: 0; top: 50px; transform: rotate(10deg);" data-540="opacity: 1; top: 0px; transform: rotate(0deg);">solutions.</div>
+                </h1>
+                <h1>
+                    <div class="pieces" 
+                        data-510="opacity: 0; top: 50px; transform: rotate(10deg);" data-610="opacity: 1; top: 0px; transform: rotate(0deg);">We</div>
+                    <div class="pieces" 
+                        data-580="opacity: 0; top: 50px; transform: rotate(10deg);" data-680="opacity: 1; top: 0px; transform: rotate(0deg);">design</div>
+                    <div class="pieces" 
+                        data-650="opacity: 0; top: 50px; transform: rotate(10deg);" data-750="opacity: 1; top: 0px; transform: rotate(0deg);">for</div>
+                    <div class="pieces" 
+                        data-730="opacity: 0; top: 50px; transform: rotate(10deg);" data-830="opacity: 1; top: 0px; transform: rotate(0deg);">people.</div>
+                </h1>
+                <h1>
+                    <div class="pieces" 
+                        data-800="opacity: 0; top: 50px; transform: rotate(10deg);" data-900="opacity: 1; top: 0px; transform: rotate(0deg);">We</div>
+                    <div class="pieces" 
+                        data-870="opacity: 0; top: 50px; transform: rotate(10deg);" data-970="opacity: 1; top: 0px; transform: rotate(0deg);">make</div>
+                    <div class="pieces" 
+                        data-940="opacity: 0; top: 50px; transform: rotate(10deg);" data-1040="opacity: 1; top: 0px; transform: rotate(0deg);">websites.</div>
+                </h1>
+                <div class="blurb" 
+                    data-1100="opacity: 0;left: -40px;" data-1200="opacity: 1; left: 0px;">
+                    ProjectMiso was established in 2001 in NYC.  As the internet grew and matured, so did we.  
+                    And as technology evolved we lead the way, every year adding to the knowledge of the past.  
+                    Web technology now runs through our veins, we live and breath it. 
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    
+    
+    <!-- 
+        ############   Intro Scene 2 ##############
+        Starts: 1300 scroll points | Ends: ??? scroll points
+        
+        Animation completed by 1200, pause till 1300
+    -->
+    <!-- The Scene Section -->
+    <section class="section intro_scene3">
+        <div class="wrapper">
+            <!-- 
+                Phase in as scene 2 ends. Time this with Scene 2 logo.
+                Push out as soon as scene 3 starts.
+            -->
+            <header 
+                data-1500="position:fixed;opacity:0;" data-1600="opacity:1;">
+                <a href="/" class="logo" title="Home"></a>
+            </header>
+    
+            <!--
+                Turnign this to fixed position just before the logo disintegration completes.
+                Starts as soon as the scene moves in - see timing for the scene's logo above.
+            -->
+            <div class="content_box" 
+                data-1600="position:fixed; left: 15%;">
+                <h1 class="out">We build brands. We grow revenue.  We all succeed.</h1>
+                
+                <!-- 
+                    Animated H1s 
+                    Each takes 100 points, the next start -30 points
+                    Starts soon after the scene moves in - see timing for the scene's logo above.
+                -->
+                <h1>
+                    <div class="segment">
+                        <div class="pieces" 
+                            data-1700="opacity: 0; left: 40px; top: 20px;" data-1800="opacity: 1; left: 0px; top: 0px;">We</div>
+                        <div class="pieces" 
+                            data-1770="opacity: 0; left: 40px; top: -20px;" data-1870="opacity: 1; left: 0px; top: 0px;">build</div>
+                        <div class="pieces" 
+                            data-1840="opacity: 0; left: 40px; top: 20px;" data-1940="opacity: 1; left: 0px; top: 0px;">brands.</div>
+                    </div>
+                    <div class="segment">
+                        <div class="pieces" 
+                            data-1910="opacity: 0; left: 40px; top: -20px;" data-2010="opacity: 1; left: 0px; top: 0px;">We</div>
+                        <div class="pieces"
+                            data-1980="opacity: 0; left: 40px; top: 20px;" data-2080="opacity: 1;  left: 0px; top: 0px;">grow</div>
+                        <div class="pieces"
+                            data-2050="opacity: 0; left: 40px; top: -20px;" data-2150="opacity: 1; left: 0px; top: 0px;">revenue.</div>
+                    </div>
+                    <div class="segment">
+                        <div class="pieces" 
+                            data-2120="opacity: 0; left: 40px; top: -20px;" data-2220="opacity: 1; left: 0px; top: 0px;">We</div>
+                        <div class="pieces" 
+                            data-2190="opacity: 0; left: 40px; top: 20px;" data-2290="opacity: 1; left: 0px; top: 0px;">all</div>
+                        <div class="pieces" 
+                            data-2260="opacity: 0; left: 40px; top: -20px;" data-2360="opacity: 1; left: 0px; top: 0px;">succeed.</div>
+                    </div>
+                </h1>
+                <div class="clearfix"></div>
+                <div class="blurb" 
+                    data-2330="opacity: 0; left: 40px;" data-2530="opacity: 1; left: 0px;">
+                    And we do it with user and client conscious strategy, amazing creative design and groundbreaking code.  
+                    We are known for our award-winning websites and applications.  We make evolved, thought provoking  
+                    products for enterprise and startups for the web, ipad, iphone and android devices.
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ########## JAVASCRIPTS ############ -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+    
+    <!-- Custom Modules -->
+    <script type="text/javascript" src="js/miso.tracker.js"></script>
+    <script type="text/javascript" src="js/miso.animator.js"></script>
+    <script type="text/javascript" src="js/skrollr.js"></script>
+    
+    <!-- Script Level -->
+    <script type="text/javascript" src="js/scripts.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,88 @@
+@import "compass";
+
+
+//================= Set some variables
+
+//--------- COLORS -------
+//General
+$clr_bodyColor: #fff;
+$clr_slashedButtons: #ED2171;
+$clr_textColor: #323232;
+
+$clr_darkest: #000;
+$clr_lightest: #fff;
+$clr_lightGray: rgba(200, 200, 200, 1);
+$clr_darkGray: rgba(50, 50, 50, 1);
+
+//Logo
+$logoColor_1: rgba(0, 193, 232, 1);     //turquoise blue
+$logoColor_2: rgba(140, 102, 174, 1);   //purple 
+$logoColor_3: rgba(80, 186, 62, 1);     //green 
+$logoColor_4: rgba(247, 185, 0, 1);     //yellow 
+
+//Navigation
+
+
+//Cut Corner
+$clr_cutCorner1: #fff;
+$clr_cutCornerBG: #ED2171;
+$clt_cutCornerText: #DBDADA;
+
+//Clients
+$clr_clientBorder: #b5b5b5;
+
+//Slides and Before-After
+$clr_slidesBorder: #dedede;
+
+//================ Mixins =================
+
+//Basic fixed position
+@mixin position-fixed($top, $left, $z) {
+    position: fixed;
+    top: $top;
+    left:$left;
+    z-index: $z;
+}
+
+//Cur corner buttons
+@mixin cutCornerBottomRight($size, $bk){
+    &:before {
+        content:"";
+        position:absolute;
+        bottom: 0;
+        right:0;
+        border-width:0px 0px $size $size;
+        border-style:solid;
+        border-color: transparent $bk $bk transparent;
+    }
+}
+
+//Max size for the site
+@mixin max-size{
+    margin: 0 auto;
+    max-width: 1280px;
+}
+
+@mixin animation($name, $duration: 1s, $easing: linear, $delay: 0s, $iteration: infinite, $direction: normal){
+    @if $name == none {
+    }
+    @else {
+        animation: $name $duration $easing $delay infinite alternate;
+        /* Safari and Chrome: */
+        -webkit-animation: $name $duration $easing $delay $iteration $direction;
+        -moz-animation: $duration $easing $delay $iteration $direction $name;
+        -ms-animation: $name $duration $easing $delay $iteration $direction;
+        //-0-animation: $name $duration $easing $delay $iteration $direction;
+        
+    }
+    
+}
+
+
+//========= Global Reset ==========
+
+@include global-reset;
+
+
+//=========== Additional Modules =========
+@import "spinners";

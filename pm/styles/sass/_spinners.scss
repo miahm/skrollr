@@ -1,0 +1,263 @@
+@mixin spinner($size: 120px, $thickness: 2px, $color: #000, $speed: 1.5s){
+    
+    $width: $size; $height: $size;
+    
+    @include animation(spin, $speed, linear, 0s, infinite);
+    //position: relative;
+    width: $width;
+    height: $height; 
+    //margin: 100px auto 0;
+    
+    border: $thickness solid $color;
+     @include border-radius(50%);
+
+
+    &:after {
+        content:"";
+        width: 85%;
+        height: 85%;
+        background: -webkit-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 40%, rgba(255,255,255,0.7) 60%, rgba(255,255,255,0) 100%);
+        position: absolute;
+        top:0;
+        left: 0;
+         @include transform (translate(-5%,-5%));
+    }
+
+    &.moon {
+        &:after {
+            display: none;
+        }
+        border-left: 0;
+        border-top: 0;
+    }
+}
+@keyframes spin{
+  0%   { @include transform(rotate(0deg)); }
+  100% { @include transform(rotate(360deg)); }
+}
+@-webkit-keyframes spin{
+  0%   { @include transform(rotate(0deg)); }
+  100% { @include transform(rotate(360deg)); }
+}
+
+
+
+
+
+
+@mixin gogoloader($size: 150px, $color: #fff, $thickness: 5px, $speed: 2s, $delay: 1s){
+    $width: $size; $height: $size;
+    
+    width: $width;
+    height: $height;
+    line-height: $height;
+    //margin: 100px auto;
+    position: relative;
+    @include box-sizing (border-box);
+    text-align: center;
+    z-index: 0;
+    text-transform: uppercase;
+    
+    &:before,
+    &:after {
+        @include opacity (0);
+        @include box-sizing (border-box);
+        content: "\0020";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @include border-radius (100px);
+        border: $thickness solid $color;
+        
+        $shadow1: 0 0 50px $color;
+        $shadow2: inset 0 0 50px $color;
+        //@include single-box-shadow ($color, 0, 0, 50px); //box-shadow: 0 0 50px $color, inset 0 0 50px $color;
+        @include box-shadow ($shadow1, $shadow2);
+    }
+
+    &:after {
+        z-index: 1;
+        @include animation(gogoloader, $speed, linear, $delay, infinite);
+    }
+
+    &:before {
+        z-index: 2;
+        @include animation(gogoloader, $speed, linear, 0s, infinite);
+        //-webkit-animation: gogoloader 2s infinite;
+    }
+}
+@keyframes gogoloader {
+    0% {
+        @include transform (scale(0));
+        @include opacity (0);
+    }
+    50% {
+        @include opacity (1);
+    }
+    100% {
+         @include transform (scale(1));
+        @include opacity (0);
+    }
+}
+@-webkit-keyframes gogoloader {
+    0% {
+        @include transform (scale(0));
+        @include opacity (0);
+    }
+    50% {
+        @include opacity (1);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        @include opacity (0);
+    }
+}
+
+
+
+
+
+
+@mixin colorspinner ($size: 100px, $thickness: 5px, $speed: 1s, $color1: #ffff99, $color2: #ffcc66, $color3: #ff9966, $color4: #ff6699, $color5: #cc66cc, $color6: #cc99cc, $color7: #fffad5){
+
+    $width: $size; $height: $size; $border: $thickness; $duration: $speed; $repetition: infinite;
+
+
+    display: block;
+    width: $width;
+    height: $height;
+    position: relative;
+    @include transform-origin(($width+$border)/2, ($height+$border)/2);
+    //transform-origin: ($width+$border)/2  ($height+$border)/2;
+    @include animation(colorspin, $duration, linear, 0s, $repetition);
+    
+  
+    .circle {
+        display: block;
+        width: 100%;
+        height: 100%;
+        @include border-radius(50%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-width: 0px 0px $border $border;
+        border-style: solid;
+        border-color: transparent;
+    
+        &.one {
+            border-left-color: $color1;
+        }
+        &.two {
+            border-left-color: $color2;
+            @include transform(rotate(-45deg));
+        }
+        &.three {
+            border-left-color: $color3;
+            @include transform(rotate(-90deg));
+        }
+        &.four {
+            border-left-color: $color4;
+            @include transform(rotate(-135deg));
+        }
+        &.five {
+            border-left-color: $color5;
+            @include transform(rotate(-180deg));
+        }
+        &.six {
+            border-left-color: $color6;
+            @include transform(rotate(-225deg));
+        }
+        &.seven {
+            border-left-color: $color7;
+            @include transform(rotate(-270deg));
+        }
+    }
+}
+
+@keyframes colorspin { from { @include transform(rotate(0deg)); } to { @include transform(rotate(-360deg)); } }
+@-webkit-keyframes colorspin { from { @include transform(rotate(0deg)); } to { @include transform(rotate(-360deg)); } }
+
+
+
+
+
+
+
+
+/* Ring Spinners 
+HTML markup
+
+<div class="CSS_CLASS_NAME">
+  <div class="ring1">
+    <div class="ring2">
+      <div class="ring3">
+        <div class="ring4">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+*/
+@mixin ringSpinners ($size: 50px, $thickness: 5px, $R: 146, $G:230, $B:1, $duration1: 3s, $duration2: 2s, $duration3: 1s, $duration4: 0.9s){
+    $repetition: infinite;
+    
+    .ring1{
+        width: $size;
+        height: $size;
+        @include border-radius (100%);
+        background-color: transparent;
+        position: absolute;
+        left: 62%;
+        top: 52%;
+        @include animation(ring_rotation, $duration1, linear, 0s, $repetition);
+        border-left: $thickness solid rgba($R,$G,$B,.15);
+        border-bottom: $thickness solid rgba($R,$G,$B,1);
+        border-right: $thickness solid rgba($R,$G,$B,.15);
+        border-top: $thickness solid rgba($R,$G,$B,1);
+    }
+    .ring2{
+        width: $size - ($thickness*2);
+        height: $size - ($thickness*2);;
+        @include border-radius (100%);
+        background-color: transparent;
+        @include animation(ring_rotation, $duration2, linear, 0s, $repetition);
+        border-left: $thickness solid rgba($R,$G,$B,.15);
+        border-bottom: $thickness solid rgba($R,$G,$B,.15);
+        border-right: $thickness solid rgba($R,$G,$B,.15);
+        border-top: $thickness solid rgba($R,$G,$B,1);
+    }
+    .ring3{
+        width: $size - ($thickness*4);
+        height: $size - ($thickness*4);
+        @include border-radius (100%);
+        background-color: transparent;
+        @include animation(ring_rotation, $duration3, linear, 0s, $repetition);
+        border-left: $thickness solid rgba($R,$G,$B,.15);
+        border-bottom: $thickness solid rgba($R,$G,$B,.15);
+        border-right: $thickness solid rgba($R,$G,$B,.15);
+        border-top: $thickness solid rgba($R,$G,$B, 1);
+    }
+    .ring4{
+        width: $size - ($thickness*6);
+        height: $size - ($thickness*6);
+        @include border-radius (100%);
+        background-color: transparent;
+        @include animation(ring_rotation, $duration4, linear, 0s, $repetition);
+        border-left: $thickness solid rgba($R,$G,$B,.15);
+        border-bottom: $thickness solid rgba($R,$G,$B,.15);
+        border-right: $thickness solid rgba($R,$G,$B,.15);
+        border-top: $thickness solid rgba($R,$G,$B, 1);
+    }
+}
+@keyframes ring_rotation {
+  from{ @include transform(rotate(0deg)); }
+  to{ @include transform(rotate(360deg)); }
+}
+@-webkit-keyframes ring_rotation {
+  from{ @include transform(rotate(0deg)); }
+  to{ @include transform(rotate(360deg)); }
+}
+
+

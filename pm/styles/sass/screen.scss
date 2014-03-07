@@ -1,0 +1,353 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "base";
+
+//=============== Element Level Global Styles ============
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: $clr_bodyColor;
+}
+body{
+
+}
+h1,h2,h3,h4,h5{}
+h1{}
+h2{}
+h3{}
+h4{}
+h5{}
+
+//============ General Global Styles =============
+
+.clearfix{
+    @include clearfix;
+    clear: both;
+}
+
+//====================== UI Level Stuff ==============
+//-------- Navigation ---------
+nav.main{
+    position: fixed;
+    display: none;
+    
+    ul{
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+    }
+}
+
+//------ Loading --------
+.loading_overlay{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0px; left: 0px;
+    background: #fff;
+    z-index: 9000;
+}
+.body_overlay_style{
+    overflow: hidden;
+}
+.spinner{
+    @media (max-width: 10000px) {
+        @include spinner(100px, 2px, #8b68ac);
+        margin-left: -50px;
+        margin-top: -50px;
+    }
+    @media (max-width: 768px) {
+        @include spinner(70px, 2px, #8b68ac);
+        margin-left: -35px;
+        margin-top: -35px;
+    }
+    @media (max-width: 640px) {
+        @include spinner(50px, 2px, #8b68ac);
+        margin-left: -25px;
+        margin-top: -25px;
+    }
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+
+
+//-------- Slanted Backgrounds ---------
+.slanted_bg{
+    position: relative;
+    
+    .slanted_bg_1{
+        position: fixed;
+        bottom: -80px;                          //device
+        height: 2000px;                         //device
+        width: 80%;                             //device
+        background: $clr_darkest;
+        @include transform (skew(-20deg, 20deg));   //device
+        z-index: 0;
+    }
+}
+
+
+//--------- Scene 1 ---------------
+section.section{
+    @include box-sizing(border-box);
+    border-bottom: 1px solid #ccc;
+    
+    
+    .content_box{
+        h1{
+            font:{
+                family: MuseoBold;
+                size: 35px;                         //Device
+            }
+            margin-bottom: 15px;                    //Device
+        
+            &.out{
+                position: relative;
+                overflow: hidden;
+                width: 0px;
+                height: 0px;
+                padding: 0px;
+                margin: 0px;
+            }
+        
+            div.pieces{
+                display: inline-block;
+                position: relative;
+            }
+        }
+        .blurb{
+            position: relative;
+            width: 90%;                             //Device
+            max-width: 650px;                       //Device
+
+            font:{
+                family: AllerLight;
+                size: 20px;                         //Device
+            }
+            line-height: 36px;                      //Device
+        }
+    }
+    
+    .wrapper{
+        position: relative;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        
+        
+        header{
+            display: block;
+            position: relative;
+            left: 15%;                                  //Device
+            width: 80%;
+            max-width: 1000px;                          //device
+            margin:  0 auto;
+            
+            .logo{
+                display: block;
+                width: 330px;                           //device
+                height: 174px;                          //device
+                position: absolute;
+                top: -20px;                             //device
+                right: 0px;
+                z-index: 3;
+                @include background-size(contain);
+            }
+        }
+    }
+            
+    //------ Logo Scene -------
+    &.intro_logo_scene{
+        position: relative;
+        height: 1000px;
+        
+        div.logo_box{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 330px;
+            height: 174px;
+            margin: -87px 0px 0px -165px;                   //device
+            
+            .logo_broken{
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 330px;
+                height: 174px;
+                
+                .project, .miso{
+                    position: absolute;
+                }
+                .project{
+                    top: 39px;
+                    left: 0px;
+                }
+                .miso{
+                    top: 87px;
+                    left: 199px;
+                }
+                .bars{
+                    position: absolute;
+                    
+                    &.top{
+                        top: 0px;
+                        left: 206px;
+                    }
+                    &.bottom{
+                        top: 91px;
+                        left: 130px;
+                    }
+                    
+                    div{
+                        position: absolute;
+                        width: 8px;
+                        
+                        &.color_1{
+                            background: $logoColor_1;
+                            height: 62px;
+                        }
+                        &.color_2{
+                            background: $logoColor_2;
+                            height: 83px;
+                        }
+                        &.color_3{
+                            background: $logoColor_3;
+                            height: 62px;
+                        }
+                        &.color_4{
+                            background: $logoColor_4;
+                            height: 41px;
+                        }
+                    }
+                    
+                    &.top{
+                        div.color_1{
+                            top: 21px;
+                            left: 54px;
+                        }
+                        div.color_2{
+                            top: 0px;
+                            left: 36px;
+                        }
+                        div.color_3{
+                            top: 21px;
+                            left: 18px;
+                        }
+                        div.color_4{
+                            top: 42px;
+                            left: 0px;
+                        }
+                    }
+                    &.bottom{
+                        div.color_1{
+                            top: 0px;
+                            left: 0px;
+                        }
+                        div.color_2{
+                            top: 0px;
+                            left: 18px;
+                        }
+                        div.color_3{
+                            top: 0px;
+                            left: 36px;
+                        }
+                        div.color_4{
+                            top: 0px;
+                            left: 54px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    //------- Intro Scene 2: Black Slanted Background ---------
+    &.intro_scene2{
+        .wrapper{
+            
+            header{
+                .logo{
+                    background: url(../../images/logo_02.png) no-repeat 0 0;
+                }
+            }
+            .content_box{
+                position: relative;
+                z-index: 4;
+                top: 32%;
+                left: 15%;                                   //Device
+                width: 80%;                                 //device ?
+                max-width: 1000px;                          //Device
+                margin:  0 auto;
+                
+                h1{
+                    color:  $clr_lightest;
+                    text-align: right;
+                }
+                .blurb{
+                    color:  $clr_lightGray;
+                    margin: 60px auto 0;                    //Device
+                }
+            }
+        }
+    }
+    
+    
+    
+    //------- Intro Scene 3: Black Slanted Background ---------
+    &.intro_scene3{
+        .wrapper{
+            header{
+                position: absolute; //to be turned into fixed in scrolling
+                top: 40px;          //same position where Scene 2 ended
+                
+                .logo{
+                    background: url(../../images/logo_01.png) no-repeat 0 0;
+                }
+            }
+            
+            .content_box{
+                position: relative;
+                z-index: 5;
+                top: 32%;
+                left: 15%;                                   //Device
+                width: 80%;                                 //device ?
+                max-width: 1000px;                          //Device
+                margin:  0 auto;
+                
+                h1{
+                    position: relative;
+                    color:  $clr_darkGray;
+                    
+                    div.segment{
+                        float: left;
+                    }
+                }
+                .blurb{
+                    color:  $clr_darkGray;
+                    margin: 70px 0 0;                      //Device
+                }
+                
+            }
+            
+        }
+    }
+    
+}
+
+
+
+
+
+
+
+//=========== Additional Modules =========
+@import "slideshow";
+@import "device";
