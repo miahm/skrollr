@@ -11,61 +11,8 @@
 
 /* For smaller displays like laptops */
 @media  (max-width: 950px) {
-    //-------- Slanted Backgrounds ---------
-    .slanted_bg{
     
-        .slanted_bg_1{
-            bottom: -80px;                          //device
-            height: 2000px;                         //device
-            width: 80%;                             //device
-            @include transform (skew(-20deg, 20deg));   //device
-        }
-    }
     
-    section.section{
-        //------- Intro Scene 2: Black Slanted Background ---------
-        &.intro_scene2{
-            .wrapper{
-            
-                header{
-                    max-width: 1000px;                          //device
-                    left: 15%;                                  //Device
-                
-                    .logo{
-                        display: block;
-                        width: 330px;                           //device
-                        height: 174px;                          //device
-                        top: -20px;                             //device
-                    }
-                }
-                .content_box{
-                    left: 15%;                                  //Device
-                
-                    width: 80%;                                 //device ?
-                    max-width: 1000px;                          //Device
-                
-                    h1{
-                        font:{
-                            size: 35px;                         //Device
-                        }
-                        margin-bottom: 15px;                    //Device
-                    
-                        span.pieces{}
-                    }
-                    .blurb{
-                        margin: 60px auto 0;                      //Device
-                        width: 90%;                             //Device
-                        max-width: 650px;                       //Device
-
-                        font:{
-                            size: 20px;                         //Device
-                        }
-                        line-height: 36px;                      //Device
-                    }
-                }
-            }
-        }
-    }
 }
 
 /* For tablets & smart phones */
@@ -73,14 +20,7 @@
 @media (max-width: 768px) {
     section.section{
         //-------- Logo Scene ------
-        &.intro_logo_scene{
-            div.logo_box{
-                //width: 280px;
-                //height: 148px;
-                @include transform (scale(.84,.84));
-                margin: -87px 0px 0px -160px;
-            }
-        }
+        
     }
 }
 
@@ -94,14 +34,7 @@
     
     section.section{
         //-------- Logo Scene ------
-        &.intro_logo_scene{
-            div.logo_box{
-                //width: 280px;
-                //height: 148px;
-                @include transform (scale(.64,.64));
-                margin: -90px 0px 0px -165px;
-            }
-        }
+        
     }
 
 }

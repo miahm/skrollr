@@ -9,10 +9,14 @@
 html,body{
     width: 100%;
     height: 100%;
-    background-color: $clr_bodyColor;
 }
 body{
-
+    //background: url(../../images/bg_top2.jpg) no-repeat 50% 50% $clr_bodyColor;
+    //background-size: cover;
+    font: {                             //Device?
+        family: AllerLight;
+        size: 16px;
+    }
 }
 h1,h2,h3,h4,h5{}
 h1{}
@@ -29,17 +33,6 @@ h5{}
 }
 
 //====================== UI Level Stuff ==============
-//-------- Navigation ---------
-nav.main{
-    position: fixed;
-    display: none;
-    
-    ul{
-        list-style: none;
-        margin: 0px;
-        padding: 0px;
-    }
-}
 
 //------ Loading --------
 .loading_overlay{
@@ -76,19 +69,137 @@ nav.main{
 }
 
 
+//-------- Navigation ---------
+nav.main{
+    position: fixed;
+    z-index: 1000;
+    top: 240px;                                                     //Device
+    right: 50px;                                                    //Device
+    @include transform (rotate(20deg));
+    display: none;
+    //@include opacity(0);
+    
+    ul{
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        position: relative;
+        @include perspective (600px);
+        
+        li{
+            outline: 1px solid transparent;
+            position: relative;
+            padding: 0 25px 0 0;
+            background: url(../../images/nav_slanted_corner.png) no-repeat bottom right transparent;
+            margin: 0 0 3px;
+            @include box-sizing (border-box);
+            @include transform-origin(right, 0);
+            @include transform-style(preserve-3d);
+            
+            a{
+                display: block;
+                padding: 15px 0px 15px 25px;                        //Device
+                min-width: 200px;                                   //Device   
+                
+                text: {
+                    transform: uppercase;
+                    decoration: none;
+                }
+                font:{
+                    Size: 20px;
+                }
+                color: $clr_navLinks;
+                background-color: $clr_navBG;
+                
+                &:hover{
+                color: $clr_lightest;
+                }
+            }
+        }
+        $i: 2;
+        @while $i < 6 {
+            li:nth-child(#{$i}){
+                left:  20px * ($i - 1);
+            }
+            $i: $i + 1;
+        }
+    }
+}
+footer{
+    @include box-sizing(border-box);
+    width: 100%;
+    height: 30px;
+    background: $clr_darkest;
+    border-top: 1px solid $clr_darkGray;
+    padding: 10px;
+    color: $clr_lightGray / 1.5;
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+    z-index: 1000;
+    font-size: 80%;
+}
+
+//-------- Intro Video ---------
+body > div.video_BG.active{
+    position: fixed; 
+    left: 0px; 
+    top: 0px; 
+    z-index: 0; 
+    width: 100%; 
+    height: 100%; 
+    overflow: hidden;
+    background-color: #333;
+}
+
+
 
 //-------- Slanted Backgrounds ---------
 .slanted_bg{
-    position: relative;
+    @include transform(translateZ(0));
+    @include backface-visibility (hidden);
+    @include transform (translate3d(0, 0, 0));
+    position: fixed;
+    width: 100%;
+    height: 100%;
     
-    .slanted_bg_1{
-        position: fixed;
-        bottom: -80px;                          //device
-        height: 2000px;                         //device
-        width: 80%;                             //device
-        background: $clr_darkest;
-        @include transform (skew(-20deg, 20deg));   //device
-        z-index: 0;
+    .slant{
+        @include transform(translateZ(0));
+        @include backface-visibility (hidden);
+        @include transform (translate3d(0, 0, 0));
+        position: absolute;
+        //outline: 1px solid transparent;
+    }
+    
+    &.slanted_bg_1{
+        bottom: 0px;
+        z-index: 2;
+        
+        .slant{
+            bottom: 100px;                              //device
+            left: 0px;
+            height: 2000px;                             //device
+            width: 90%;                                 //device
+            background: $clr_darkest;
+            @include transform (skew(-20deg, 20deg));   //device
+            @include transform-origin (0%, 100%);
+        }
+    }
+    
+    &.slanted_bg_2{
+        top: 0px;
+        z-index: 4;
+        @include perspective (600px);
+        
+        .slant{
+            right: 0px;
+            top: 10%;
+            height: 200%;                               //device
+            width: 55%;                                 //device
+            background: $clr_darkGray;
+            @include transform-origin (100%, 0%);
+            @include transform(rotateX(8deg) rotateY(15deg) skew(-20deg, 10deg));
+        }
     }
 }
 
@@ -96,43 +207,10 @@ nav.main{
 //--------- Scene 1 ---------------
 section.section{
     @include box-sizing(border-box);
-    border-bottom: 1px solid #ccc;
+    //border-bottom: 1px solid #999;
+    position: relative;
     
     
-    .content_box{
-        h1{
-            font:{
-                family: MuseoBold;
-                size: 35px;                         //Device
-            }
-            margin-bottom: 15px;                    //Device
-        
-            &.out{
-                position: relative;
-                overflow: hidden;
-                width: 0px;
-                height: 0px;
-                padding: 0px;
-                margin: 0px;
-            }
-        
-            div.pieces{
-                display: inline-block;
-                position: relative;
-            }
-        }
-        .blurb{
-            position: relative;
-            width: 90%;                             //Device
-            max-width: 650px;                       //Device
-
-            font:{
-                family: AllerLight;
-                size: 20px;                         //Device
-            }
-            line-height: 36px;                      //Device
-        }
-    }
     
     .wrapper{
         position: relative;
@@ -145,8 +223,9 @@ section.section{
             display: block;
             position: relative;
             left: 15%;                                  //Device
-            width: 80%;
-            max-width: 1000px;                          //device
+            width: 75%;
+            height: 174px;                              //device
+            max-width: 1600px;                          //device
             margin:  0 auto;
             
             .logo{
@@ -154,10 +233,44 @@ section.section{
                 width: 330px;                           //device
                 height: 174px;                          //device
                 position: absolute;
-                top: -20px;                             //device
-                right: 0px;
                 z-index: 3;
                 @include background-size(contain);
+            }
+        }
+        
+        h1{
+            font:{
+                family: MuseoBold;
+                size: 35px;                         //Device
+            }
+            margin-bottom: 15px;                    //Device
+    
+            &.out{
+                position: relative;
+                overflow: hidden;
+                width: 0px;
+                height: 0px;
+                padding: 0px;
+                margin: 0px;
+            }
+    
+            div.pieces{
+                display: inline-block;
+                position: relative;
+            }
+        }
+            
+        .content_box{
+            .blurb{
+                position: relative;
+                width: 90%;                             //Device
+                max-width: 1200px;                       //Device
+
+                font:{
+                    family: AllerLight;
+                    size: 20px;                         //Device
+                }
+                line-height: 36px;                      //Device
             }
         }
     }
@@ -171,14 +284,24 @@ section.section{
             position: fixed;
             top: 50%;
             left: 50%;
-            width: 330px;
-            height: 174px;
-            margin: -87px 0px 0px -165px;                   //device
+            width:507px;
+            height: 409px;
+            margin: -204px 0px 0px -254px;                   //device
+            
+            background: url(../../images/hexagon_bg.png) no-repeat 0 0 transparent;
+            //background: rgba(255, 255, 255, .95);
+            //@include border-radius(100%);
+            
+            img.scroll{
+                display: block;
+                margin: 30px auto 0;
+            }
             
             .logo_broken{
-                position: absolute;
-                top: 0px;
-                left: 0px;
+                position: relative;
+                margin: 60px auto 60px;
+                //top: 0px;
+                //left: 0px;
                 width: 330px;
                 height: 174px;
                 
@@ -265,17 +388,20 @@ section.section{
                     }
                 }
             }
+            
         }
     }
     
     
     //------- Intro Scene 2: Black Slanted Background ---------
     &.intro_scene2{
+        z-index: 3;
         .wrapper{
             
             header{
                 .logo{
                     background: url(../../images/logo_02.png) no-repeat 0 0;
+                    right: 0%;
                 }
             }
             .content_box{
@@ -283,8 +409,8 @@ section.section{
                 z-index: 4;
                 top: 32%;
                 left: 15%;                                   //Device
-                width: 80%;                                 //device ?
-                max-width: 1000px;                          //Device
+                width: 60%;                                 //device ?
+                max-width: 1600px;                          //Device
                 margin:  0 auto;
                 
                 h1{
@@ -306,10 +432,11 @@ section.section{
         .wrapper{
             header{
                 position: absolute; //to be turned into fixed in scrolling
-                top: 40px;          //same position where Scene 2 ended
+                top: 20px;          //same position where Scene 2 ended
                 
                 .logo{
                     background: url(../../images/logo_01.png) no-repeat 0 0;
+                    right: 0%;
                 }
             }
             
@@ -319,8 +446,9 @@ section.section{
                 top: 32%;
                 left: 15%;                                   //Device
                 width: 80%;                                 //device ?
-                max-width: 1000px;                          //Device
+                max-width: 1600px;                          //Device
                 margin:  0 auto;
+                @include perspective (600px);
                 
                 h1{
                     position: relative;
@@ -340,6 +468,326 @@ section.section{
         }
     }
     
+    //------- Intro Scene 3: Black Slanted Background ---------
+    &.intro_scene4{
+        z-index: 4;
+        .wrapper{
+            header{
+                z-index: 11;
+                left: 5%;                                   //Device
+                position: absolute; //to be turned into fixed in scrolling
+                top: 20px;          //same position where Scene 2 ended
+                
+                .logo{
+                    position: absolute;
+                    top: 0px;
+                    @include transform-style(preserve-3d);
+                    
+                    @include transform(translateZ(0));
+                    @include backface-visibility (hidden);
+                    @include transform (translate3d(0, 0, 0));
+                    
+                    &.one{
+                        background: url(../../images/logo_01.png) no-repeat 0 0;
+                    }
+                    &.two{
+                        background: url(../../images/logo_02.png) no-repeat 0 0;
+                    }
+                }
+            }
+            
+            h1{
+                position: absolute;
+                z-index: 8;
+                overflow: hidden;
+                
+                span.content{
+                    white-space: nowrap;
+                }
+                
+                &.one{
+                    color: $clr_lightest;
+                    top: -90px;                                 //Device?
+                    left: 0px;                                  //Device?
+                    background-color:  $logoColor_1;
+                    padding: 25px 200px 25px 35px;              //Device
+                    @include transform (rotate(-30deg));
+                    @include transform-origin(100%, 50%);
+                }
+                
+                &.two{
+                    color: $clr_lightest;
+                    top: -100px;                                //Device?
+                    left: -60px;                                //Device?
+                    background-color:  $logoColor_4;
+                    padding: 25px 200px 25px 35px;              //Device
+                    @include transform (rotate(-28deg));
+                    @include transform-origin(100%, 50%);
+                }
+                
+                &.three{
+                    color: $clr_lightest;
+                    top: -100px;                                //Device?
+                    left: -60px;                                //Device?
+                    background-color:  $logoColor_2;
+                    padding: 25px 200px 25px 35px;              //Device
+                    @include transform (rotate(-25deg));
+                    @include transform-origin(100%, 50%);
+                }
+            }
+            
+            .content_box{
+                position: relative;
+                top: 0px;
+                left: 0px;    
+                z-index: 6;
+                width: 100%;
+                height: 100%;
+                //max-width: 1000px;                            //Device
+                @include perspective (600px);
+                
+                .slider{
+                    position: absolute;
+                    width: 50%;
+                    height: 100%;
+                    overflow: hidden;
+                    
+                    .blurb{
+                        position: absolute;
+                        
+                        .blurb_wrap{
+                            position: absolute;
+                            width: 100%;
+                        }
+                    }
+                    
+                    
+                    //-------- Slide 1 -------
+                    &.one{
+                        z-index: 10;
+                        
+                        .blurb{
+                            top: 60%;
+                            color:  $logoColor_1;
+                        }
+                    
+                        .laptop{
+                            position: absolute;
+                            top: 30%;
+                            width: 296px;
+                            height: 244px;
+                    
+                            div{
+                                position: absolute;
+                        
+                                &.screen.top{
+                                    top: 0px; left: 117px;
+                                }
+                                &.screen.right{
+                                    top: 50px; left: 281px;
+                                }
+                                &.keyboard.bottom{
+                                    top: 144px; left: 0px;
+                                }
+                                &.keyboard.right{
+                                    top: 194px; left: 169px;
+                                }
+                                &.arrow{
+                                    top: 40px; left: 138px;
+                                }
+                            }
+                        }
+                    
+                        &.left{
+                            left: 0px;
+                            background: $clr_darkest;
+                        
+                            .blurb{
+                                right: 0px;
+                                .blurb_wrap{
+                                    right: -50%;
+                                }
+                            }
+                            
+                            .laptop{
+                                right: -148px;
+                            }
+                        }
+                        &.right{
+                            left: 50%;
+                            background: $clr_darkGray;
+                        
+                            .blurb{
+                                left: 0px;
+                                .blurb_wrap{
+                                    left: -50%;
+                                }
+                            }
+                            .laptop{
+                                left: -148px;
+                            }
+                        }
+                    }
+                    
+                    //------- Slide 2 --------
+                    &.two{
+                        z-index: 9;
+                    
+                        .bulb{
+                            position: absolute;
+                            top: 30%;
+                            width: 159px;
+                            height: 232px;
+                        }
+                        .blurb{
+                            top: 60%;
+                            color: $logoColor_4;
+                        }
+                        
+                        &.left{
+                            left: 0px;
+                            background: $clr_darkGray;
+                        
+                            .blurb{
+                                right: 0px;
+                            }
+                        }
+                        &.right{
+                            left: 50%;
+                            background: $clr_darkest;
+                        
+                            .blurb{
+                                left: 0px;
+                            }
+                        }
+                    }
+                    
+                    //------- Slide 3 --------
+                    &.three{
+                        z-index: 8;
+                    
+                        .graph{
+                            position: absolute;
+                            top: 30%;
+                            width: 249px;
+                            height: 257px;
+                        }
+                        .blurb{
+                            top: 60%;
+                            color: $logoColor_2;
+                        }
+                        
+                        &.left{
+                            left: 0px;
+                            background: $clr_darkest;
+                        
+                            .blurb{
+                                right: 0px;
+                            }
+                        }
+                        &.right{
+                            left: 50%;
+                            background: $logoColor_5;
+                        
+                            .blurb{
+                                left: 0px;
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+    
+    
+    //------- Intro Scene 3: Black Slanted Background ---------
+    &.intro_scene5{
+        .wrapper{
+            header{
+                z-index: 12;
+                left: 5%;                                   //Device
+                position: absolute; //to be turned into fixed in scrolling
+                top: 20px;          //same position where Scene 2 ended
+                
+                .logo{
+                    position: absolute;
+                    top: 0px;
+                
+                    &.one{
+                        background: url(../../images/logo_01.png) no-repeat 0 0;
+                    }
+                    &.two{
+                        background: url(../../images/logo_02.png) no-repeat 0 0;
+                    }
+                }
+            }
+            
+            
+            .content_box{
+                position: relative;
+                z-index: 6;
+                top: 0px;
+                left: 50%;   
+                width: 3500px;                                  //Device?
+                height: 100%;
+                margin-left: -1750px;                           //Device
+                @include perspective (600px);
+                
+                .stripe{
+                    width: 100px;                               //Device
+                    height: 100%;
+                    position: relative;
+                    overflow: hidden;
+                    float: left;
+                    
+                    &.odd{
+                        background-color: $logoColor_5;
+                    }
+                    &.even{
+                        background-color: $clr_darkest;
+                        color: $clr_lightest;
+                    }
+                    
+                    .content{
+                        position: absolute;
+                        top: 50%;
+                        margin-top: -50px;                      //Device
+                        width: 460px;                           //Device
+                        h1{
+                            white-space: no-wrap;
+                        }
+                    }
+                    
+                    &.heading_1 {
+                        .content{
+                            left: 80px;                         //Device
+                        }
+                    }
+                    &.heading_2 {
+                        .content{
+                            left: -20px;                        //Device
+                        }
+                    }
+                    &.heading_3 {
+                        .content{
+                            left: -120px;                       //Device
+                        }
+                    }
+                    &.heading_4 {
+                        .content{
+                            left: -220px;                       //Device
+                        }
+                    }
+                    &.heading_5 {
+                        .content{
+                            left: -320px;                //Device
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 

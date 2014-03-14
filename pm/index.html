@@ -14,100 +14,174 @@
 </head>
 <body class="body_overlay_style">
 
-    <!-- Loading Overlay -->
+    <!-- 
+        Loading Overlay 
+            Start at opening
+            Phases out on load, never returns
+    -->
     <div class="loading_overlay">
 		<div class="spinner moon"></div>
     </div>
     
     <!--
         Main Nav - that can move and reposition
+        
+        Appears in Intro Scene 2
+            Phase in: 1300 to 2000
+        
     -->
-    <nav class="main">
+    <nav class="main" data-0="display: none;"
+        data-100="display: block;"
+        data-4600="top: 240px" data-4800="top: 80px;">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Our Process</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Case Studies</a></li>
+            <li data-1300="transform:rotateY(90deg) skew(0, -2deg);opacity:0;"
+                data-1600="transform:rotateY(0deg) skew(0, -2deg);opacity:1;"><a href="#">Home</a></li>
+            <li data-1400="transform:rotateY(90deg) skew(0, -2deg);opacity:0;"
+                data-1700="transform:rotateY(0deg) skew(0, -2deg);opacity:1;"><a href="#">About</a></li>
+            <li data-1500="transform:rotateY(90deg) skew(0, -2deg);opacity:0;"
+                data-1800="transform:rotateY(0deg) skew(0, -2deg);opacity:1;"><a href="#">Our Process</a></li>
+            <li data-1600="transform:rotateY(90deg) skew(0, -2deg);opacity:0;"
+                data-1900="transform:rotateY(0deg) skew(0, -2deg);opacity:1;"><a href="#">Services</a></li>
+            <li data-1700="transform:rotateY(90deg) skew(0, -2deg);opacity:0;"
+                data-2000="transform:rotateY(0deg) skew(0, -2deg);opacity:1;"><a href="#">Case Studies</a></li>
         </ul>
     </nav>
+    
+    
+    <!-- 
+        Video BG
+            Startes on load, with Intro Scene 1
+                Start: 0 | End: 2200
+            Phases out going toward Intro Scene 2
+                Start: 2200 | End: 2500
+    -->
+    <div class="video_BG" 
+        data-2200="opacity: 1; display: block;" data-2500="opacity: 0; display: none;"></div>
+    
     
     
     
     <!--  
         ############   Intro Scene 1 ##############
-        Starts: 0 scroll points | Ends: 205 scroll points
+            Phase in: logo and video screen in the background
+                Start: 0 | End: 300 
+            Phase out: 
+                Start: 200 | End: 300
     -->
     <section class="section intro_logo_scene">
         <!-- turn this from absolute/relative to fixed, then return to absolute to move it out of screen -->
-        <div class="logo_box" data-201="position: fixed; top: 50%;" data-205="position: absolute; top: 0px">
+        <div class="logo_box" 
+                data-0="opacity: 1; transform: scale(1, 1);"  data-200="opacity: 1; transform: scale(.5, 0.1);"
+                data-300="position: fixed; top: 50%;" data-301="position: absolute; top: -500px">
             <div class="logo_broken">
-                <div class="project" data-60="left: 0px;opacity:1" data-200="left: -100px;opacity:0"><img src="images/logo_01_project.png" width="204" height="49" alt="logo_01_project"></div>
-                <div class="miso" data-60="left: 199px;opacity:1" data-200="left: 300px;opacity:0"><img src="images/logo_01_miso.png" width="131" height="46" alt="logo_01_miso"></div>
+                <div class="project"><img src="images/logo_01_project.png" width="204" height="49" alt="logo_01_project"></div>
+                <div class="miso"><img src="images/logo_01_miso.png" width="131" height="46" alt="logo_01_miso"></div>
                 <div class="bars top">
-                    <div class="color_4" data-0="top: 42px;opacity:1" data-200="top: -500px;opacity:0"></div>
-                    <div class="color_3" data-0="top: 21px;opacity:1" data-150="top: -500px;opacity:0"></div>
-                    <div class="color_2" data-0="top: 0px;opacity:1" data-100="top: -500px;opacity:0"></div>
-                    <div class="color_1" data-0="top: 21px;opacity:1" data-50="top: -500px;opacity:0"></div>
+                    <div class="color_4"></div>
+                    <div class="color_3"></div>
+                    <div class="color_2"></div>
+                    <div class="color_1"></div>
+                    
                 </div>
                 <div class="bars bottom">
-                    <div class="color_4" data-0="top: 0px;opacity:1" data-200="top: 500px;opacity:0"></div>
-                    <div class="color_3" data-0="top: 0px;opacity:1" data-150="top: 500px;opacity:0"></div>
-                    <div class="color_2" data-0="top: 0px;opacity:1" data-100="top: 500px;opacity:0"></div>
-                    <div class="color_1" data-0="top: 0px;opacity:1" data-50="top: 500px;opacity:0"></div>
+                    <div class="color_4"></div>
+                    <div class="color_3"></div>
+                    <div class="color_2"></div>
+                    <div class="color_1"></div>
                 </div>
             </div>
+            
+            <img class="scroll text" src="images/scroll_down_text.png"  alt="scroll_down_text">
+            
+            <img class="scroll icon" src="images/scroll_image.png" alt="scroll_image">
         </div>
     
     </section>
     
     <!-- 
-        Black/White Slanted Background 
-        Should start moving just before logo disappears => for Intro Scene 2
+        Black/White Slanted Background. Used in multiple scenes.
+        Phase In: To Intro Scene 2 as the scene phases out
+            Start: 10 | End: 300
+            
+        Partial Phase out: Intro Scene 3: 
+            Start: 2300 | End: 2700
+            
+        Full Phase out: Intro Scene 4: 
+            Start: 4600 | End: 5000
     -->
-    <div class="slanted_bg" 
-        data-0="left: 130%;" 
-        data-150="left: 130%;" data-250="left: 30%;" 
-        data-1400="left: 30%;" data-1700="left: -67%;">
-        <div class="slanted_bg_1"></div>
+    <div class="slanted_bg slanted_bg_1" 
+        data-10="left: 105%;" data-300="left: 2%;" 
+        data-2300="left: 2%;" data-2700="left: -110%;"
+        data-4600="left: -110%;" data-5000="left: -250%;">
+        <div class="slant"></div>
     </div>
-        
+    
+    
+    
     <!-- 
         ############   Intro Scene 2 ##############
-        Starts: 150 scroll points | Ends: 1500 scroll points
+        Phase in: Phases in as Intro 1 is still phasing out, slanted BG comes in
+            Start: 150  | End: 1400 
+            Animation completed by 1690, pause till 2300 (allow the Navigation to phase in)
         
-        Animation completed by 1200, pause till 1300
+        Phase in Sequence:
+            1. H1 animations
+            2. Logo, fades and moves in
+            3. Blurb, fades and moves in
+            4. Navigation
+        
+        Phase out: Synced with slanted BG partial phase out, ending slightly earlier
+            Starts: 2300 | Ends: 2550
+        
+        Phase Out Sequence:
+            1. Slanted BG Partial phase out + Content Box (H1 and blurb included), ending 2500
+            2. Logo fade out to scene 3 logo, ending 2550
     -->
+    
     <!-- The Scene Section -->
     <section class="section intro_scene2">
         <div class="wrapper">
             
             <!-- 
-                Turn this from absolute/relative to fixed, then return to absolute to move it out of screen.
-                Time it to show this after the H1 paragraphs below.
-                Phase out while Scene 3 is coming in. Time this with Scene 3 logo.
+                Logo for the Schene
+                    Reset/Hide:
+                        Start: 0, Set to position "relative" - to be changed to "fixed"
+                
+                    Phase In: As the H1 headings complete phasing in
+                        Start: 700 | End: 1100
+                
+                    Phase Out: Very quick. Phase out while Scene 3 is coming in. Time this with Scene 3 logo, overlapping each other.
+                        Start: 2500 | End: 1550
             -->
-            <header 
-                data-700="position:fixed;opacity:0;top:-200px;" data-1100="opacity:1;top:40px;"
-                data-1500="opacity:1;" data-1605="opacity:0; pisition: relative;">
+            <header data-0="position: relative"
+                data-700="position:fixed;opacity:0;top:0px;" data-1100="opacity:1;top:20px;"
+                data-2500="opacity:1;position:fixed;" data-2550="opacity:0; position: relative;">
                 <a href="/" class="logo" title="Home"></a>
             </header>
             
             <!--
-                Turning this to fixed position just before the logo disintegration completes.
-                Phases out as Scene 3 comes in
+                Content Box, including H1 heading
+                    Reset/Hide:
+                        Start: 0, Set to position "relative" - to be changed to "fixed"
+                    
+                    Show: 200 ("fixed" position)
+                    
+                    Phase Out: Synced with Slanted BG Patrial Phase out
+                        Start: 2300 | End: 2500
             -->
-            <div class="content_box" 
-                data-150="position:fixed; left: 15%;"
-                data-1500="opacity: 1;" data-1605="opacity: 0; position: relative;">
+            <div class="content_box"  data-0="position: relative"
+                data-200="position:fixed; left: 15%;"
+                data-2300="opacity: 1;" data-2500="opacity: 0; position: relative;">
                 
                 <!-- This H1 is invisible to the user -->
                 <h1 class="out">We develop business solutions. We design for people. We make websites.</h1>
                 
                 <!-- 
-                    Animated H1s 
-                    Each takes 100 points, the next start -30 points
-                    Starts slightly before the slanted BG stops - see above.
+                    Animated H1s
+                        Each takes 100 points, the next start -30 points. Starts slightly before the slanted BG phase in stops - see above.
+                        
+                        Phase In:
+                            Start: 230 | End: 1290
                 -->
                 <h1>
                     <div class="pieces" 
@@ -121,24 +195,31 @@
                 </h1>
                 <h1>
                     <div class="pieces" 
-                        data-510="opacity: 0; top: 50px; transform: rotate(10deg);" data-610="opacity: 1; top: 0px; transform: rotate(0deg);">We</div>
+                        data-640="opacity: 0; top: 50px; transform: rotate(10deg);" data-740="opacity: 1; top: 0px; transform: rotate(0deg);">We</div>
                     <div class="pieces" 
-                        data-580="opacity: 0; top: 50px; transform: rotate(10deg);" data-680="opacity: 1; top: 0px; transform: rotate(0deg);">design</div>
+                        data-710="opacity: 0; top: 50px; transform: rotate(10deg);" data-810="opacity: 1; top: 0px; transform: rotate(0deg);">design</div>
                     <div class="pieces" 
-                        data-650="opacity: 0; top: 50px; transform: rotate(10deg);" data-750="opacity: 1; top: 0px; transform: rotate(0deg);">for</div>
+                        data-780="opacity: 0; top: 50px; transform: rotate(10deg);" data-880="opacity: 1; top: 0px; transform: rotate(0deg);">for</div>
                     <div class="pieces" 
-                        data-730="opacity: 0; top: 50px; transform: rotate(10deg);" data-830="opacity: 1; top: 0px; transform: rotate(0deg);">people.</div>
+                        data-850="opacity: 0; top: 50px; transform: rotate(10deg);" data-950="opacity: 1; top: 0px; transform: rotate(0deg);">people.</div>
                 </h1>
                 <h1>
                     <div class="pieces" 
-                        data-800="opacity: 0; top: 50px; transform: rotate(10deg);" data-900="opacity: 1; top: 0px; transform: rotate(0deg);">We</div>
+                        data-1050="opacity: 0; top: 50px; transform: rotate(10deg);" data-1150="opacity: 1; top: 0px; transform: rotate(0deg);">We</div>
                     <div class="pieces" 
-                        data-870="opacity: 0; top: 50px; transform: rotate(10deg);" data-970="opacity: 1; top: 0px; transform: rotate(0deg);">make</div>
+                        data-1120="opacity: 0; top: 50px; transform: rotate(10deg);" data-1220="opacity: 1; top: 0px; transform: rotate(0deg);">make</div>
                     <div class="pieces" 
-                        data-940="opacity: 0; top: 50px; transform: rotate(10deg);" data-1040="opacity: 1; top: 0px; transform: rotate(0deg);">websites.</div>
+                        data-1190="opacity: 0; top: 50px; transform: rotate(10deg);" data-1290="opacity: 1; top: 0px; transform: rotate(0deg);">websites.</div>
                 </h1>
+                
+                <!--
+                    Content blurb: phases in after the H1 headings
+                    
+                        Phase In:
+                            Start: 1390 | End: 1690
+                -->
                 <div class="blurb" 
-                    data-1100="opacity: 0;left: -40px;" data-1200="opacity: 1; left: 0px;">
+                    data-1390="opacity: 0;left: -40px;" data-1690="opacity: 1; left: 0px;">
                     ProjectMiso was established in 2001 in NYC.  As the internet grew and matured, so did we.  
                     And as technology evolved we lead the way, every year adding to the knowledge of the past.  
                     Web technology now runs through our veins, we live and breath it. 
@@ -151,65 +232,104 @@
     
     
     <!-- 
-        ############   Intro Scene 2 ##############
-        Starts: 1300 scroll points | Ends: ??? scroll points
+        ############   Intro Scene 3 ##############
+        Phase in: Starts as scene to is phasing out and slanted BG is performing partial phase out
+            Starts: 2300  | Ends: 4030 
+            Animation completed by 4030, pause till 4700
         
-        Animation completed by 1200, pause till 1300
+        Phase 1 Sequence:
+            1. Logo, swap/fade synced with scene 2 logo
+            2. H1 Heading, animation
+            3. Blurb of text, fades and moves in
+        
+        Phase Out:
+            Start: 4500 | End: 5000
+        
+        Phase Out Sequence:
+            1. Slanted BG full phase out + Logo Starts moving
+            2. Content (H1 and blurb) fades out
+            
     -->
     <!-- The Scene Section -->
     <section class="section intro_scene3">
         <div class="wrapper">
             <!-- 
-                Phase in as scene 2 ends. Time this with Scene 2 logo.
-                Push out as soon as scene 3 starts.
+                Logo for the Schene
+                    Reset/Hide:
+                        Start: 0, Set to position "relative" - to be changed to "fixed"
+                        
+                    Phase In:  As scene 2 ends. Time this with Scene 2 logo, overlapping each other.
+                        Start: 2400 | End: 2500
+                        
+                    Hide: As soon as Slanted BG moves for full phase out. Sync with scene 4 logo and Slanted BG full phase out.
+                        Start: 4599
             -->
-            <header 
-                data-1500="position:fixed;opacity:0;" data-1600="opacity:1;">
+            <header  data-0="position: relative"
+                data-2400="position:fixed;opacity:0;" data-2500="opacity:1;"
+                data-4599="opacity:1;" data-4600="opacity:0; position: relative;">
                 <a href="/" class="logo" title="Home"></a>
             </header>
     
             <!--
-                Turnign this to fixed position just before the logo disintegration completes.
-                Starts as soon as the scene moves in - see timing for the scene's logo above.
+                Content Box, including H1 heading
+                    Reset/Hide:
+                        Start: 0, Set to position "relative" - to be changed to "fixed"
+                        
+                    Show: 2300 ("fixed" position. As soon as the scene moves in - see timing for the scene's logo above.)
+                    
+                    Phase Out:  Using opacity. Syced with Slanted BG full phase out.
+                        Start: 4700 | 5000
             -->
-            <div class="content_box" 
-                data-1600="position:fixed; left: 15%;">
+            <div class="content_box"  data-0="position: relative"
+                data-2300="position:fixed; left: 15%;"
+                data-4700="opacity: 1;" data-5000="opacity: 0; position: relative;">
+                
+                <!-- This H1 is invisible to the user -->
                 <h1 class="out">We build brands. We grow revenue.  We all succeed.</h1>
                 
                 <!-- 
                     Animated H1s 
-                    Each takes 100 points, the next start -30 points
-                    Starts soon after the scene moves in - see timing for the scene's logo above.
+                        Each takes 100 points, the next start -30 points. Starts when the Slanted BG partial phase out stops - see above.
+                        
+                        Phase In: 
+                            Start: 2700 | End: 3630
                 -->
                 <h1>
                     <div class="segment">
                         <div class="pieces" 
-                            data-1700="opacity: 0; left: 40px; top: 20px;" data-1800="opacity: 1; left: 0px; top: 0px;">We</div>
+                            data-2700="opacity: 0; left: 40px; top: 20px; transform: scale(2);" data-2800="opacity: 1; left: 0px; top: 0px; transform: scale(1);">We</div>
                         <div class="pieces" 
-                            data-1770="opacity: 0; left: 40px; top: -20px;" data-1870="opacity: 1; left: 0px; top: 0px;">build</div>
+                            data-2770="opacity: 0; left: 40px; top: -20px;transform: scale(2);" data-2870="opacity: 1; left: 0px; top: 0px; transform: scale(1);">build</div>
                         <div class="pieces" 
-                            data-1840="opacity: 0; left: 40px; top: 20px;" data-1940="opacity: 1; left: 0px; top: 0px;">brands.</div>
+                            data-2840="opacity: 0; left: 40px; top: 20px;transform: scale(2);" data-2940="opacity: 1; left: 0px; top: 0px; transform: scale(1);">brands.</div>
                     </div>
                     <div class="segment">
                         <div class="pieces" 
-                            data-1910="opacity: 0; left: 40px; top: -20px;" data-2010="opacity: 1; left: 0px; top: 0px;">We</div>
+                            data-3040="opacity: 0; left: 40px; top: -20px;transform: scale(2);" data-3140="opacity: 1; left: 0px; top: 0px; transform: scale(1);">We</div>
                         <div class="pieces"
-                            data-1980="opacity: 0; left: 40px; top: 20px;" data-2080="opacity: 1;  left: 0px; top: 0px;">grow</div>
+                            data-3110="opacity: 0; left: 40px; top: 20px;transform: scale(2);" data-3210="opacity: 1;  left: 0px; top: 0px; transform: scale(1);">grow</div>
                         <div class="pieces"
-                            data-2050="opacity: 0; left: 40px; top: -20px;" data-2150="opacity: 1; left: 0px; top: 0px;">revenue.</div>
+                            data-3190="opacity: 0; left: 40px; top: -20px;transform: scale(2);" data-3290="opacity: 1; left: 0px; top: 0px; transform: scale(1);">revenue.</div>
                     </div>
                     <div class="segment">
                         <div class="pieces" 
-                            data-2120="opacity: 0; left: 40px; top: -20px;" data-2220="opacity: 1; left: 0px; top: 0px;">We</div>
+                            data-3390="opacity: 0; left: 40px; top: -20px;transform: scale(2);" data-3490="opacity: 1; left: 0px; top: 0px; transform: scale(1);">We</div>
                         <div class="pieces" 
-                            data-2190="opacity: 0; left: 40px; top: 20px;" data-2290="opacity: 1; left: 0px; top: 0px;">all</div>
+                            data-3460="opacity: 0; left: 40px; top: 20px;transform: scale(2);" data-3560="opacity: 1; left: 0px; top: 0px; transform: scale(1);">all</div>
                         <div class="pieces" 
-                            data-2260="opacity: 0; left: 40px; top: -20px;" data-2360="opacity: 1; left: 0px; top: 0px;">succeed.</div>
+                            data-3530="opacity: 0; left: 40px; top: -20px;transform: scale(2);" data-3630="opacity: 1; left: 0px; top: 0px; transform: scale(1);">succeed.</div>
                     </div>
                 </h1>
                 <div class="clearfix"></div>
+                
+                <!--
+                    Content blurb: phases in after the H1 headings, wait for 100
+                    
+                        Phase In:
+                            Start: 3730 | End: 4030
+                -->
                 <div class="blurb" 
-                    data-2330="opacity: 0; left: 40px;" data-2530="opacity: 1; left: 0px;">
+                    data-3730="opacity: 0; left: 40px;" data-4030="opacity: 1; left: 0px;">
                     And we do it with user and client conscious strategy, amazing creative design and groundbreaking code.  
                     We are known for our award-winning websites and applications.  We make evolved, thought provoking  
                     products for enterprise and startups for the web, ipad, iphone and android devices.
@@ -217,6 +337,456 @@
             </div>
         </div>
     </section>
+    
+    
+    
+    
+    <!-- 
+        ############   Intro Scene 4 ##############
+        Phase in: Starts as soon as Slanted BG full phase out
+            Starts: 5000 | Ends: 10300 
+        
+        Sequence:
+            1. Logo fades in and starts moving. Navigation moves up
+            2. H1 Heading slides in
+            3. Slide 1 starts opening + Logo from dark to light
+            4. Slide 1 to Slide 2
+            5. Slide 2 to Slide 3
+            6. Slide 3 to Slide 4
+        
+        Phase Out:
+            Start: ? to 
+        
+    -->
+    
+    
+    <!-- 
+        Gray/White Slanted Background 
+            Should start moving in as Scene 3 phases out
+        Intro Scene 4: 
+            Start: 2700 | End: ??
+    <div class="slanted_bg slanted_bg_2" 
+        data-4000="right: -205%;" data-4500="right: 2%;" >
+        <div class="slant"></div>
+    </div>
+    -->
+    
+    <!-- The Scene Section -->
+    <section class="section intro_scene4">
+        <div class="wrapper">
+            <!-- 
+                Logo for the Schene
+                    Reset/Hide:
+                        Start: 0, Set to position "relative" and hidden - to be changed to "fixed"
+                         
+                    Show: 
+                        (Dark) Phase In:  As scene 3 ends. Time this with Scene 3 logo, show and then move.
+                            Start: 4600 | End: 4900
+                    
+                        (Dark) Phase Out (Slide 1): At the very end of slide 1 phasing in
+                        (Light) Phase in:
+                            Start: 5600 | End: 5700
+                        
+                        (Light) Phase Out (Slide 3): At the very end of slide 3 phasing out
+                        (Dark) Phase in:
+                            Start: 9800 | End: 10000
+                    
+                    Hide: Sudden, Synced with arrival of Scene 5
+                        Start: 10300
+            -->
+            <header data-0="position: relative; display: none;"
+                data-4600="position: fixed; display: block;" 
+                data-10300="position: relative; display: none;">
+                
+                <a href="/" class="logo one" title="Home"
+                    data-4600="left: 62%;" data-5000="left: 0%; opacity: 1;"
+                    data-5800="opacity: 1;" data-5900="opacity: 0;"
+                    data-9800="opacity: 0;" data-10000="opacity: 1;"></a>
+                
+                <a href="/" class="logo two" title="Home"
+                    data-0="display: none; opacity: 0;" data-4500="display: none; opacity: 0;" 
+                    data-5800="display: block; opacity: 0;" data-5900="opacity: 1;"
+                    data-9800="opacity: 1;" data-10000="opacity: 0;"></a>
+            </header>
+            
+            <!--
+                Slide 1 Heading. Slides in as slanted from the top. Sync with logo. Should start after the logo starts moving.Starts before slide 1
+                    Phase In: Length is 300 
+                        Start: 4700 | End: 5300
+                    Phase Out: Length is 200. Starts right before slide 2 starts phasing in
+                        Start: 6600 | End: 6800
+            -->
+            <h1 class="one" data-0="position: relative; display: none;" 
+                data-4700="position: fixed; display: block;  top: -600px; left: 900px" data-5300="top: -90px; left: -50px;"
+                data-6600="transform: rotate(-30deg); opacity: 1;" data-6650="transform: rotate(-32deg);" data-6800="transform: rotate(-20deg); opacity: 0;"
+                data-10300="position: relative; display: none;">
+                <span class="content">We build products that users actually use.</span>
+            </h1>
+            
+            <!--
+                Slide 2 Heading: 
+                    Phase In: Length is 300. Synced with slide 2 phasing in, slide 1 phasing out 
+                        Start: 6700 | End: 7000
+                    Phase Out: Length is 200. Right before slide 3 starts phasing in
+                        Start: 8000 | End: 8200
+            -->
+            <h1 class="two" data-0="position: relative; display: none; opacity: 0; " data-6300="position: fixed; display: block;"
+                data-6700="transform: rotate(-40deg); opacity: 0;" data-7000="transform: rotate(-28deg); opacity: 1;"
+                data-8000="transform: rotate(-28deg); opacity: 1;" data-8050="transform: rotate(-30deg); " data-8200="transform: rotate(-20deg); opacity: 0;"
+                data-10300="position: relative; display: none;">
+                <span class="content">We design for people. We build a better web.</span>
+            </h1>
+            
+            <!--
+                Slide 3 Heading 
+                    Phase In: Length is 300. Synced with slide 3 phasing in, slide 2 phasing out 
+                        Start: 8100 | End: 8400
+                    Phase Out: Length is 200. Right before slide 4 starts phasing in
+                        Start: 9300 | End: 9500
+            -->
+            <h1 class="three"  data-0="position: relative; display: none; opacity: 0; "  data-7700="position: fixed; display: block;"
+                data-8100="transform: rotate(-40deg); opacity: 0;" data-8300="transform: rotate(-25deg); opacity: 1;"
+                data-9300="transform: rotate(-25deg); opacity: 1;" data-9350="transform: rotate(-27deg); " data-9500="transform: rotate(-20deg); opacity: 0;"
+                data-10300="position: relative; display: none;">
+                <span class="content">Award Winning Projects. 100s of Millions in Sales.</span>
+            </h1>
+            
+            
+            
+            <!--
+                Content Box, excluding H1 heading
+                    Reset/Hide:
+                        Start: 0, Set to position "relative" and "hidden" - to be changed to "fixed"
+                        
+                    Show: 5300 ("fixed" position. When logo finishes its move)
+                    Hide: 10300
+            -->
+            <div class="content_box one"  data-0="display: none; position: relative;"
+                data-5300="display: block; position:fixed;"
+                data-10300="position: relative; display: none;">
+                
+                <!--
+                    Slider 1: LEFT. Starts as soon as logo move is finished
+                        Reset/Hide:
+                            Start: 0. Width=0, left=center (to roll out from center) 
+                        
+                        Phase In: 5300 left from the center. Pause for 700
+                            Start: 5300 | End: 6000
+                        
+                        Phase out: Sync this with next slide Phase In
+                            Start: 6700 | End: 7400
+                -->
+                <div class="slider one left" data-0="width: 0%; left: 50%; display: none;" 
+                    data-5300="width: 0%; left: 50%;display: block;" data-6000="width: 50.05%; left: 0%;" data-6001="width: 50%"
+                    data-6700="width: 50%; left: 0%;" data-7400="width: 0%; left: -5%;">
+                    
+                    <div class="laptop">
+                        <div class="screen top"><img src="images/laptop_screen.png" width="168" height="192" alt="laptop_screen"></div>
+                        <div class="screen right"><img src="images/laptop_screen_left.png" width="12" height="144" alt="laptop_screen_left"></div>
+                        <div class="keyboard bottom"><img src="images/laptop_keyboard.png" width="277" height="98" alt="laptop_keyboard"></div>
+                        <div class="keyboard right"><img src="images/laptop_keyboard_right.png" width="120" height="47" alt="laptop_keyboard_right"></div>
+                        <div class="arrow"><img src="images/laptop_arrow.png" width="44" height="51" alt="laptop_arrow"></div>
+                    </div>
+                
+                    <div class="blurb" >
+                        <div class="blurb_wrap">
+                            There are 634 million websites.  There are over 2 billion people using the internet 
+                            everyday.  But how many of those websites are being accessed everyday?  How many are 
+                            being looked over for more than a minute?    Which are the websites that users come 
+                            back to again and again?  And how do you connect to the users that are interested in 
+                            your product?
+                        </div>
+                    </div>
+                </div>
+                <!--
+                    Slider 1: RIGHT 
+                        Same as above
+                -->
+                <div class="slider one right" data-0="width: 0%;"
+                    data-5300="width: 0%;" data-6000="width: 50%;"
+                    data-6700="width: 50%; left: 50%" data-7400="width: 0%; left: 105%;">
+                    
+                    <div class="laptop">
+                        <div class="screen top"><img src="images/laptop_screen.png" width="168" height="192" alt="laptop_screen"></div>
+                        <div class="screen right"><img src="images/laptop_screen_left.png" width="12" height="144" alt="laptop_screen_left"></div>
+                        <div class="keyboard bottom"><img src="images/laptop_keyboard.png" width="277" height="98" alt="laptop_keyboard"></div>
+                        <div class="keyboard right"><img src="images/laptop_keyboard_right.png" width="120" height="47" alt="laptop_keyboard_right"></div>
+                        <div class="arrow"><img src="images/laptop_arrow.png" width="44" height="51" alt="laptop_arrow"></div>
+                    </div>
+
+                    <div class="blurb" >
+                        <div class="blurb_wrap">
+                            There are 634 million websites.  There are over 2 billion people using the internet 
+                            everyday.  But how many of those websites are being accessed everyday?  How many are 
+                            being looked over for more than a minute?    Which are the websites that users come 
+                            back to again and again?  And how do you connect to the users that are interested in 
+                            your product?
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <!--
+                    Slider 2: LEFT. Starts as soon previous slide is phasing out
+                        Reset/Hide:
+                            Start: 0. Width=0, left=center (to roll out from center) 
+                        
+                        Show: 6700 (as soon as slide 1 starts moving out)
+                        
+                        Phase In: Roll left (and right) from the center. Pause for 700
+                            Start: 6700 | End: 7400
+                        
+                        Phase out: Sync this with next slide Phase In
+                            Start: 8100 | End: 8800
+                -->
+                <div class="slider two left" data-0="display: none;" 
+                    data-6700="display: block;"
+                    data-8100="width: 50%; left: 0%;" data-8800="width: 0%; left: -5%;">
+                    
+                    <div class="bulb" data-6700="right: 150px;" data-7400="right: -79.5px;"><img src="images/lightbulb.png" width="159" height="232" alt="lightbulb"></div>
+                
+                    <div class="blurb" >
+                        <div class="blurb_wrap" data-6700="right: 10%;" data-7400="right: -50%;">
+                            Users want a striking, relevant, well-organized and engaging experience from their 
+                            websites.  When a website is built around these principles, users browse longer, 
+                            spend more, endorse, and keep coming back.  These are the websites we shape, the 
+                            websites that are remembered and used.
+                        </div>
+                    </div>
+                </div>
+                <!--
+                    Slider 2: RIGHT 
+                        Same as above
+                -->
+                <div class="slider two right"  data-0="display: none;" data-6400="display: block;"
+                    data-8100="width: 50%; left: 50%" data-8800="width: 0%; left: 105%;">
+                    
+                    <div class="bulb" data-6700="left: 150px;" data-7400="left: -79.5px;"><img src="images/lightbulb.png" width="159" height="232" alt="lightbulb"></div>
+
+                    <div class="blurb" >
+                        <div class="blurb_wrap"  data-6700="left: 10%;" data-7400="left: -50%;">
+                            Users want a striking, relevant, well-organized and engaging experience from their 
+                            websites.  When a website is built around these principles, users browse longer, 
+                            spend more, endorse, and keep coming back.  These are the websites we shape, the 
+                            websites that are remembered and used.
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <!--
+                    Slider 3: LEFT. Starts as soon previous slide is phasing out
+                        Reset/Hide:
+                            Start: 0. Width=0, left=center (to roll out from center) 
+                        
+                        Show: 8100 (as soon as slide 1 starts moving out)
+                        
+                        Phase In: Roll left (and right) from the center. Pause for 700
+                            Start: 8100 | End: 8800
+                        
+                        Phase out: Sync this with next slide Phase In
+                            Start: 9500 | End: 10300
+                -->
+                <div class="slider three left" data-0="display: none;" 
+                    data-8100="display: block;"
+                    data-9500="width: 50%; left: 0%;" data-10300="width: 0%; left: -5%;">
+                    
+                    <div class="graph" data-8100="right: 150px;" data-8800="right: -124.5px;"><img src="images/intro_bargraph.png" width="249" height="257" alt="intro_bargraph"></div>
+                
+                    <div class="blurb" >
+                        <div class="blurb_wrap" data-8100="right: 10%;" data-8800="right: -50%;">
+                            We develop websites, applications and software.  Our endeavors have won awards.  
+                            Our pursuits have made our clients over $300 million in revenue.  Our successes 
+                            have established a loyal clientele.  We know what it takes to speak to the 
+                            right audience regardless of the platform.
+                        </div>
+                    </div>
+                </div>
+                <!--
+                    Slider 3: RIGHT 
+                -->
+                <div class="slider three right"  data-0="display: none;" 
+                    data-8100="display: block;"
+                    data-9500="width: 50%; left: 50%;" data-10300="width: 0%; left: 105%;">
+                    
+                    <div class="graph" data-8100="left: 150px;" data-8800="left: -124.5px;"><img src="images/intro_bargraph.png" width="249" height="257" alt="intro_bargraph"></div>
+
+                    <div class="blurb" >
+                        <div class="blurb_wrap"  data-8100="left: 10%;" data-8800="left: -50%;">
+                            We develop websites, applications and software.  Our endeavors have won awards.  
+                            Our pursuits have made our clients over $300 million in revenue.  Our successes 
+                            have established a loyal clientele.  We know what it takes to speak to the 
+                            right audience regardless of the platform.
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+    </section>
+    
+    
+    
+    
+    
+    
+    <!-- 
+        ############   Intro Scene 5 ##############
+        Phase in: Starts as soon as Scene 4 ends
+            Starts: 10300 | Ends: ? 
+            Animation completed by ?, pause till ?
+        
+        Sequence:
+            1. Logo fades in and starts moving. Navigation moves up
+            
+        
+        Phase Out:
+            Start: ? to 
+        
+    -->
+    
+    <!-- The Scene Section -->
+    <section class="section intro_scene5">
+        <div class="wrapper">
+            <!-- 
+                Logo for the Schene
+                    Reset/Hide:
+                        Start: 0, Set to position "relative" and hidden - to be changed to "fixed"
+            -->
+            <header data-0="position: relative; display: none;"
+                data-10300="position: fixed; display: block;" >
+                
+                <a href="/" class="logo one" title="Home"></a>
+                
+                <a href="/" class="logo two" title="Home"
+                    data-0="display: none; opacity: 0;"></a>
+            </header>
+            
+            <!--
+                Content Box, excluding H1 heading
+                    Reset/Hide:
+                        Start: 0, Set to position "relative" and "hidden" - to be changed to "fixed"
+                        
+                    Show: 5300 ("fixed" position. When logo finishes its move)
+            -->
+            <div class="content_box one"  data-0="display: none; position: relative;"
+                data-10300="display: block; position:fixed;" data-10600="position:fixed;">
+                
+                <div class="stripe odd" data-0="top: 102%"
+                    data-17100="top: 102%" data-17500="top: 0%;"></div>                       <!-- Offset 17 -->
+                <div class="stripe even" data-0="top: -102%"
+                    data-16700="top: -102%" data-17100="top: 0%;"></div>                     <!-- Offset 16 -->
+                <div class="stripe odd" data-0="top: 102%"
+                    data-16300="top: 102%" data-16700="top: 0%;"></div>                       <!-- Offset 15 -->
+                <div class="stripe even" data-0="top: -102%"
+                    data-15900="top: -102%" data-16300="top: 0%;"></div>                     <!-- Offset 14 -->
+                <div class="stripe odd" data-0="top: 102%"
+                    data-15500="top: 102%" data-15900="top: 0%;"></div>                       <!-- Offset 13 -->
+                <div class="stripe even" data-0="top: -102%"
+                    data-15100="top: -102%" data-15500="top: 0%;"></div>                     <!-- Offset 12 -->
+                <div class="stripe odd" data-0="top: 102%"
+                    data-14700="top: 102%" data-15100="top: 0%;"></div>                       <!-- Offset 11 -->
+                <div class="stripe even" data-0="top: -102%"
+                    data-14300="top: -102%" data-14700="top: 0%;"></div>                     <!-- Offset 10 -->
+                <div class="stripe odd" data-0="top: 102%"
+                    data-13900="top: 102%" data-14300="top: 0%;"></div>                       <!-- Offset 9 -->
+                <div class="stripe even" data-0="top: -102%"
+                    data-13500="top: -102%" data-13900="top: 0%;"></div>                     <!-- Offset 8 -->
+                <div class="stripe odd" data-0="top: 102%"
+                    data-13100="top: 102%" data-13500="top: 0%;"></div>                       <!-- Offset 7 -->
+                <div class="stripe even" data-0="top: -102%"
+                    data-12700="top: -102%" data-13100="top: 0%;"></div>                     <!-- Offset 6 -->
+                <div class="stripe odd" data-0="top: 102%"
+                    data-12300="top: 102%" data-12700="top: 0%;"></div>                       <!-- Offset 5 -->
+                <div class="stripe even" data-0="top: -102%"
+                    data-11900="top: -102%" data-12300="top: 0%;"></div>                     <!-- Offset 4 -->
+                <div class="stripe odd" data-0="top: 102%"
+                    data-11500="top: 102%" data-11900="top: 0%;"></div>                       <!-- Offset 3 -->
+                
+                <div class="stripe even heading_1" data-0="top: -102%"
+                    data-11100="top: -102%" data-11500="top: 0%;">                 <!-- Offset 2 -->
+                    <div class="content">
+                        <h1>Some of the Clients</h1>
+                        <h1>We’ve Worked With</h1>
+                    </div>
+                </div>
+                <div class="stripe odd heading_2" data-0="top: 102%"
+                    data-10700="top: 102%" data-11100="top: 0%;">                   <!-- Offset 1 -->
+                    <div class="content">
+                        <h1>Some of the Clients</h1>
+                        <h1>We’ve Worked With</h1>
+                    </div>
+                </div>
+                <div class="stripe even heading_3" data-0="top: -102%"
+                    data-10300="top: -102%" data-10700="top: 0%;">                      <!-- STARTING Point -->
+                    <div class="content">
+                        <h1>Some of the Clients</h1>
+                        <h1>We’ve Worked With</h1>
+                    </div>
+                </div>
+                <div class="stripe odd heading_4" data-0="top: 102%"
+                    data-10700="top: 102%" data-11100="top: 0%;">                   <!-- Offset 1 -->
+                    <div class="content">
+                        <h1>Some of the Clients</h1>
+                        <h1>We’ve Worked With</h1>
+                    </div>
+                </div>
+                <div class="stripe even heading_5" data-0="top: -102%"
+                    data-11100="top: -102%" data-11500="top: 0%;">                 <!-- Offset 2 -->
+                    <div class="content">
+                        <h1>Some of the Clients</h1>
+                        <h1>We’ve Worked With</h1>
+                    </div>
+                </div>
+                
+                <div class="stripe odd" data-0="top: 102%"
+                    data-11500="top: 102%" data-11900="top: 0%;"></div>                       <!-- Offset 3 -->
+                <div class="stripe even" data-0="top: -102%"
+                    data-11900="top: -102%" data-12300="top: 0%;"></div>                     <!-- Offset 4 -->
+                <div class="stripe odd" data-0="top: 102%"
+                    data-12300="top: 102%" data-12700="top: 0%;"></div>                       <!-- Offset 5 -->
+                <div class="stripe even" data-0="top: -102%"
+                    data-12700="top: -102%" data-13100="top: 0%;"></div>                     <!-- Offset 6 -->
+                <div class="stripe odd" data-0="top: 102%"
+                    data-13100="top: 102%" data-13500="top: 0%;"></div>                       <!-- Offset 7 -->
+                <div class="stripe even" data-0="top: -102%"
+                    data-13500="top: -102%" data-13900="top: 0%;"></div>                     <!-- Offset 8 -->
+                <div class="stripe odd" data-0="top: 102%"
+                    data-13900="top: 102%" data-14300="top: 0%;"></div>                       <!-- Offset 9 -->
+                <div class="stripe even" data-0="top: -102%"
+                    data-14300="top: -102%" data-14700="top: 0%;"></div>                     <!-- Offset 10 -->
+                <div class="stripe odd" data-0="top: 102%"
+                    data-14700="top: 102%" data-15100="top: 0%;"></div>                       <!-- Offset 11 -->
+                <div class="stripe even" data-0="top: -102%"
+                    data-15100="top: -102%" data-15500="top: 0%;"></div>                     <!-- Offset 12 -->
+                <div class="stripe odd" data-0="top: 102%"
+                    data-15500="top: 102%" data-15900="top: 0%;"></div>                       <!-- Offset 13 -->
+                <div class="stripe even" data-0="top: -102%"
+                    data-15900="top: -102%" data-16300="top: 0%;"></div>                     <!-- Offset 14 -->
+                <div class="stripe odd" data-0="top: 102%"
+                    data-16300="top: 102%" data-16700="top: 0%;"></div>                       <!-- Offset 15 -->
+                <div class="stripe even" data-0="top: -102%"
+                    data-16700="top: -102%" data-17100="top: 0%;"></div>                     <!-- Offset 16 -->
+                <div class="stripe odd" data-0="top: 102%"
+                    data-17100="top: 102%" data-17500="top: 0%;"></div>                       <!-- Offset 17 -->
+                
+            </div>
+            
+        <div>
+    </section>
+    
+    
+    
+    <footer>
+        contact info, email link, phone number, copyright notice
+    </footer>
+    
+    
+    
     
     <!-- ########## JAVASCRIPTS ############ -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -227,6 +797,7 @@
     <script type="text/javascript" src="js/miso.tracker.js"></script>
     <script type="text/javascript" src="js/miso.animator.js"></script>
     <script type="text/javascript" src="js/skrollr.js"></script>
+    <script type="text/javascript" src="js/jquery.videoBG.js"></script>
     
     <!-- Script Level -->
     <script type="text/javascript" src="js/scripts.js"></script>
